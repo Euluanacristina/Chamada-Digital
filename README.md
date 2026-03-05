@@ -23,9 +23,3 @@ Cada falta vale 5%. O limite padrão é 25%, ou seja, o aluno entra em situaçã
 
 Todos os dados ficam salvos localmente no dispositivo. Nenhuma informação é enviada para servidores externos.
 
-## Como rodar
-
-```bash
-npm install
-npm run dev
-```
