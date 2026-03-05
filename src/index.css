@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-display: Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+
+  --color-paper: #F5F3EF;
+  --color-white: #FFFFFF;
+  --color-gray-50: #F0EEE9;
+  --color-gray-100: #E2DED6;
+  --color-gray-300: #B8B2A7;
+  --color-gray-500: #7A7368;
+  --color-gray-700: #4A4540;
+  --color-gray-900: #1E1B18;
+  --color-slate: #1E3A5F;
+  --color-slate-mid: #2D5282;
+  --color-slate-lt: #4A7AB5;
+  --color-slate-bg: #EBF1F8;
+
+  --color-green-text: #2D6A4F;
+  --color-green-bg: #D8F0E6;
+  --color-red-text: #A02020;
+  --color-red-bg: #FAE0E0;
+  --color-amber-text: #92600A;
+  --color-amber-bg: #FDF0D5;
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-gray-900 font-sans;
+  }
+  h1, h2, .font-display {
+    @apply font-display;
+  }
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-50;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Print styles */
+@media print {
+  /* Ocultar completamente a navegação e controles */
+  nav,
+  aside,
+  header,
+  footer,
+  .no-print,
+  [data-print="hide"],
+  .sidebar,
+  .bottom-nav,
+  .btn-exportar,
+  .filtros-relatorio,
+  .acoes-relatorio {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Remover fundo colorido, usar branco puro para impressão */
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+    font-family: 'Arial';
+  }
+
+  /* A área imprimível ocupa a página toda */
+  .print-area {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Cabeçalho do relatório impresso */
+  .print-header {
+    display: block !important;
+    margin-bottom: 20pt;
+    padding-bottom: 10pt;
+    border-bottom: 1pt solid #000;
+  }
+
+  /* Tabelas ocupam a largura total na impressão */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  th, td {
+    border: 1pt solid #ccc !important;
+    padding: 6pt 8pt !important;
+    font-size: 10pt !important;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f0f0f0 !important;
+    font-weight: bold !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Evitar quebra de página no meio de uma linha */
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* Forçar quebra de página antes de nova seção se necessário */
+  .print-page-break {
+    page-break-before: always;
+  }
+
+  /* Garantir que badges de status apareçam corretamente */
+  .badge-presente,
+  .badge-falta,
+  .badge-justificada,
+  .badge-regular,
+  .badge-critico {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

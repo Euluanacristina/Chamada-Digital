@@ -1,0 +1,5 @@
+{
+  "name": "Digital Attendance",
+  "description": "Online attendance system for university professors with offline support and report export.",
+  "requestFramePermissions": []
+}
